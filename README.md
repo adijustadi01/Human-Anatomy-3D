@@ -36,7 +36,7 @@ write `// comments` (e.g. page references). One entry looks like:
 {
   id: 'ul-nerve-median',          // unique; used in links and quiz progress — don't rename casually
   name: 'Median nerve', aka: [],
-  type: 'nerve',                  // muscle | nerve | artery | vein | lymphatic | bone | joint | space | organ
+  type: 'nerve',                  // muscle | nerve | artery | vein | lymphatic | bone | joint | space | organ | cns | tract
   system: ['nervous'],            // ids from js/registry.js (can be empty for spaces)
   region: 'upper-limb',
   zones: ['arm', 'forearm'],      // clickable diagram zones it appears under

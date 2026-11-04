@@ -64,6 +64,20 @@
         F('bloodSupply', 'Blood supply', 'text', 'Blood supply of the {name}?'),
         F('nerveSupply', 'Nerve supply', 'text', 'Nerve supply of the {name}?'),
         F('lymphatics', 'Lymphatic drainage', 'text', 'Lymphatic drainage of the {name}?')
+      ] },
+      cns: { label: 'CNS structure', plural: 'Brain & spinal cord', fields: [
+        F('connections', 'Connections', 'list', 'Main connections of the {name}?'),
+        F('functions', 'Functions', 'list', 'Functions of the {name}?'),
+        F('bloodSupply', 'Blood supply', 'text', 'Blood supply of the {name}?'),
+        F('lesion', 'Effects of lesion', 'list', 'Effects of a lesion of the {name}?')
+      ] },
+      tract: { label: 'Tract / pathway', plural: 'Tracts & pathways', fields: [
+        F('origin', 'Origin (cell bodies)', 'text', 'Origin of the {name}?'),
+        F('course', 'Course', 'text'),
+        F('decussation', 'Decussation', 'text', 'Where does the {name} decussate?'),
+        F('termination', 'Termination', 'text', 'Termination of the {name}?'),
+        F('function', 'Function', 'text', 'Function of the {name}?'),
+        F('lesion', 'Effects of lesion', 'list', 'Effects of a lesion of the {name}?')
       ] }
     },
     /* rendered as their own sections; listed here so validator knows the keys */
