@@ -121,3 +121,34 @@ table.rel { border-collapse: collapse; width: 100%; }
 .card.recall .rv:not(.shown)::after { content: 'Tap to reveal'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: .82rem; font-weight: 600; color: var(--accent); }
 .card.recall .rv.shown { animation: rvIn .2s ease; }
 @keyframes rvIn { from { opacity: .3; } to { opacity: 1; } }
+
+/* Teaching diagrams */
+:root { --art: #c0392b; --nerve: #c99400; --vein: #2b6cb0; --vein-soft: #dbe8f6; --asc: #9fd3e6; --desc: #f4c19a; }
+@media (prefers-color-scheme: dark) { :root { --art: #ef7b6c; --nerve: #e3b341; --vein: #6aa3e0; --vein-soft: #1f3346; --asc: #2c5b6b; --desc: #6b4428; } }
+.fig { margin: 10px 0 20px; }
+.figbar { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+.figbar a { text-decoration: none; color: var(--ink); }
+.figbtns { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.figsvg { width: 100%; max-height: 540px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+.fig .ln { stroke: var(--ink); stroke-width: 1.6; fill: none; }
+.fig .lead { stroke: var(--muted); stroke-width: .8; fill: none; }
+.fig .dash { stroke-dasharray: 6 5; }
+.fig .sh { fill: var(--zone); stroke: var(--zone-line); stroke-width: 1.2; }
+.fig .grey { fill: var(--zone-line); opacity: .55; }
+.fig .tend { fill: var(--bg); stroke: var(--ink); stroke-width: 1.2; }
+.fig .art { stroke: var(--art); fill: none; stroke-width: 3; stroke-linecap: round; }
+.fig .artf { fill: var(--art); }
+.fig .nv { stroke: var(--nerve); fill: none; stroke-width: 3; stroke-linecap: round; }
+.fig .nvf { fill: var(--nerve); }
+.fig .vnf { fill: var(--vein-soft); stroke: var(--vein); stroke-width: 1.4; }
+.fig .trA { fill: var(--asc); } .fig .trD { fill: var(--desc); }
+.fig .ft { fill: var(--muted); font-size: 11px; }
+.fig .mark { fill: var(--bad); } .fig .markt { fill: #fff; font-size: 11px; font-weight: 700; text-anchor: middle; }
+.lbl text { font-size: 11.5px; } .lt { fill: var(--ink); } .lbox { fill: transparent; }
+.lnum { display: none; fill: var(--accent); font-weight: 700; }
+.lbl.has-ref { cursor: pointer; } .lbl.has-ref:hover .lt { fill: var(--accent); text-decoration: underline; }
+.fig.hidden .lbl:not(.shown) .lt { display: none; }
+.fig.hidden .lbl:not(.shown) .lbox { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1; }
+.fig.hidden .lbl:not(.shown) .lnum { display: inline; }
+.fig.hidden .lbl:not(.shown) { cursor: pointer; }
+.fig.hidden .lbl.shown .lt { fill: var(--ok); font-weight: 600; }

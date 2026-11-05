@@ -46,6 +46,10 @@ for (const s of AN.structures) {
   if (s.verified && !s.source) warns.push(`${at}: verified but no source given`);
 }
 
+for (const f of AN.FIGURES || []) {
+  [...(f.structures || []), ...f.labels.map(l => l.r).filter(Boolean)]
+    .forEach(r => { if (!AN.byId[r]) errs.push(`figure ${f.id}: link to missing id "${r}"`); });
+}
 const unv = AN.structures.filter(s => !s.verified);
 const flagged = AN.structures.filter(s => (s.doubtful || []).length);
 console.log(`\n${AN.structures.length} structures · ${AN.structures.length - unv.length} verified · ${unv.length} unverified · ${flagged.length} with flagged fields\n`);

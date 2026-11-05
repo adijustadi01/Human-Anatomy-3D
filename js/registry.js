@@ -6,6 +6,9 @@ window.AN = window.AN || {};
   AN.byId = {};
   AN.errors = [];
   AN.DIAGRAMS = {};
+  AN.FIGURES = [];   // teaching diagrams (diagrams/figures/*.js)
+  AN.figById = {};
+  AN.registerFigure = function (f) { AN.FIGURES.push(f); AN.figById[f.id] = f; };
 
   AN.registerStructures = function (file, list) {
     list.forEach(function (s) {

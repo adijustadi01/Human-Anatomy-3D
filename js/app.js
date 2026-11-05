@@ -19,8 +19,11 @@
         if (e.key !== ' ') return;
         var n = v.querySelector('.card.recall .rv:not(.shown)');
         if (n) { e.preventDefault(); n.classList.add('shown'); n.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+        else if (AN.revealNextLabel(v)) e.preventDefault();
       };
     }
+    else if (a === 'figs') AN.figPages.list(v);
+    else if (a === 'fig') AN.figPages.one(v, b);
     else if (a === 'quiz') AN.quiz.route(v, b, r.params);
     else if (a === 'progress') AN.progressPage(v);
     else if (a === 'review') AN.reviewPage(v);
@@ -43,6 +46,23 @@
       card.querySelectorAll('.rv').forEach(function (x) { x.classList.remove('shown'); });
       t.classList.toggle('on', on);
       t.textContent = on ? '🧠 Recall: on' : '🧠 Recall: off';
+      return;
+    }
+    var fh = e.target.closest('[data-fighide]');
+    if (fh) {
+      var fg = fh.closest('.fig'), hide = !fg.classList.contains('hidden');
+      fg.classList.toggle('hidden', hide);
+      fg.querySelectorAll('.lbl').forEach(function (x) { x.classList.remove('shown'); });
+      fh.textContent = hide ? '👁 Show labels' : '🙈 Hide labels'; fh.classList.toggle('on', hide);
+      AN.figCount(fg); return;
+    }
+    var fr = e.target.closest('[data-figreveal]');
+    if (fr) { var fg2 = fr.closest('.fig'); fg2.querySelectorAll('.lbl').forEach(function (x) { x.classList.add('shown'); }); AN.figCount(fg2); return; }
+    var lb = e.target.closest('.lbl');
+    if (lb) {
+      var fg3 = lb.closest('.fig');
+      if (fg3.classList.contains('hidden') && !lb.classList.contains('shown')) { lb.classList.add('shown'); AN.figCount(fg3); }
+      else if (lb.getAttribute('data-ref')) location.hash = '#/s/' + lb.getAttribute('data-ref');
       return;
     }
     var ra = e.target.closest('[data-revealall]');

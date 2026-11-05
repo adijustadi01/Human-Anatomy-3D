@@ -67,6 +67,9 @@
       return '<div class="mn"><strong>' + esc(m.text || '') + '</strong> — ' + rv(AN.rich(m.meaning || ''), m.meaning) + '</div>';
     }).join(''));
 
+    var figs = AN.figuresFor ? AN.figuresFor(s.id) : [];
+    if (figs.length) h += '<section class="csec"><h3>Diagrams</h3>' + figs.map(function (f) { return AN.renderFigure(f, rec); }).join('') + '</section>';
+
     if (s.reviewNote) h += '<div class="note">📝 ' + AN.rich(s.reviewNote) + '</div>';
 
     h += '<footer class="cfoot"><a class="btn" href="#/quiz/flash?structure=' + s.id + '&unv=1">Flashcards for this structure</a>' +
