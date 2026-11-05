@@ -13,7 +13,14 @@
     if (!a) AN.nav.home(v);
     else if (a === 'region') AN.nav.region(v, b, r.params);
     else if (a === 'system') AN.nav.system(v, b);
-    else if (a === 's') v.innerHTML = AN.byId[b] ? AN.renderCard(AN.byId[b]) : '<p>Structure “' + AN.esc(b) + '” not found.</p>';
+    else if (a === 's') {
+      v.innerHTML = AN.byId[b] ? AN.renderCard(AN.byId[b]) : '<p>Structure “' + AN.esc(b) + '” not found.</p>';
+      AN.onKey = function (e) { // Space reveals the next hidden item in recall mode
+        if (e.key !== ' ') return;
+        var n = v.querySelector('.card.recall .rv:not(.shown)');
+        if (n) { e.preventDefault(); n.classList.add('shown'); n.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+      };
+    }
     else if (a === 'quiz') AN.quiz.route(v, b, r.params);
     else if (a === 'progress') AN.progressPage(v);
     else if (a === 'review') AN.reviewPage(v);
@@ -26,6 +33,20 @@
   }
 
   document.addEventListener('click', function (e) {
+    var r = e.target.closest('.card.recall .rv:not(.shown)');
+    if (r) { e.preventDefault(); r.classList.add('shown'); return; }
+    var t = e.target.closest('[data-recall]');
+    if (t) {
+      var on = !AN.recallOn(), card = t.closest('.card');
+      AN.store.setSetting('recall', on);
+      card.classList.toggle('recall', on);
+      card.querySelectorAll('.rv').forEach(function (x) { x.classList.remove('shown'); });
+      t.classList.toggle('on', on);
+      t.textContent = on ? '🧠 Recall: on' : '🧠 Recall: off';
+      return;
+    }
+    var ra = e.target.closest('[data-revealall]');
+    if (ra) { ra.closest('.card').querySelectorAll('.rv').forEach(function (x) { x.classList.add('shown'); }); return; }
     var b = e.target.closest('[data-bm]');
     if (!b) return;
     var on = AN.store.toggleBookmark(b.dataset.bm);
