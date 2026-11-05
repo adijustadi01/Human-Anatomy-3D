@@ -169,3 +169,7 @@ table.rel { border-collapse: collapse; width: 100%; }
 .why { margin: 14px 0 12px; padding: 12px 14px; background: var(--accent-soft); border-radius: 8px; }
 .why p { margin: 0 0 6px; }
 .nav-sm .topnav a { padding: 6px 8px; }
+
+/* Flashcard type picker */
+.kinds { border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; display: flex; flex-wrap: wrap; gap: 6px 16px; width: 100%; }
+.kinds legend { font-size: .85rem; color: var(--muted); padding: 0 4px; }
