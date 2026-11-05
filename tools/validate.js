@@ -58,6 +58,13 @@ for (const c of AN.COMPARISONS || []) {
     c.rows.forEach(r => { if (r.cells.length !== c.columns.length) errs.push(`comparison ${c.id}: row "${r.label}" has ${r.cells.length} cells, expected ${c.columns.length}`); });
   }
 }
+const seenCase = {};
+for (const c of AN.CASES || []) {
+  if (seenCase[c.id]) errs.push(`case ${c.id}: duplicate id`); seenCase[c.id] = 1;
+  if (!c.stem || !c.why) errs.push(`case ${c.id}: needs stem and why`);
+  if (!Array.isArray(c.options) || c.options.length < 2) errs.push(`case ${c.id}: needs at least 2 options (correct first)`);
+  (c.refs || []).forEach(r => { if (!AN.byId[r]) errs.push(`case ${c.id}: link to missing id "${r}"`); });
+}
 const unv = AN.structures.filter(s => !s.verified);
 const flagged = AN.structures.filter(s => (s.doubtful || []).length);
 console.log(`\n${AN.structures.length} structures · ${AN.structures.length - unv.length} verified · ${unv.length} unverified · ${flagged.length} with flagged fields\n`);

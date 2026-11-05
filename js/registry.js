@@ -11,6 +11,8 @@ window.AN = window.AN || {};
   AN.registerFigure = function (f) { AN.FIGURES.push(f); AN.figById[f.id] = f; };
   AN.COMPARISONS = []; // comparison tables (content/comparisons.js)
   AN.registerComparisons = function (list) { AN.COMPARISONS = AN.COMPARISONS.concat(list); };
+  AN.CASES = [];       // "where's the lesion?" cases (content/cases.js)
+  AN.registerCases = function (list) { AN.CASES = AN.CASES.concat(list); };
 
   AN.registerStructures = function (file, list) {
     list.forEach(function (s) {

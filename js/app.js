@@ -23,6 +23,7 @@
       };
     }
     else if (a === 'compare') { if (b) AN.comparePages.one(v, b); else AN.comparePages.list(v); }
+    else if (a === 'cases') AN.casePages.route(v, b, r.params);
     else if (a === 'figs') AN.figPages.list(v);
     else if (a === 'fig') AN.figPages.one(v, b);
     else if (a === 'quiz') AN.quiz.route(v, b, r.params);

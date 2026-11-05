@@ -72,6 +72,9 @@
       return '<li><a href="#/compare/' + c.id + '">' + esc(c.title) + '</a></li>';
     }).join('') + '</ul></section>';
 
+    var cs = AN.casesFor ? AN.casesFor(s.id) : [];
+    if (cs.length) h += '<p><a class="btn" href="#/cases/run?structure=' + s.id + '&unv=1">🩺 ' + cs.length + ' clinical case' + (cs.length > 1 ? 's' : '') + ' — where’s the lesion?</a></p>';
+
     var figs = AN.figuresFor ? AN.figuresFor(s.id) : [];
     if (figs.length) h += '<section class="csec"><h3>Diagrams</h3>' + figs.map(function (f) { return AN.renderFigure(f, rec); }).join('') + '</section>';
 

@@ -6,7 +6,7 @@
 (function (AN) {
   var KEY = 'anatomy-progress-v1';
   function blank() {
-    return { srs: {}, bookmarks: {}, mcq: { total: 0, correct: 0, byType: {} }, days: {}, settings: { newPerDay: 20, unverified: false } };
+    return { srs: {}, bookmarks: {}, mcq: { total: 0, correct: 0, byType: {} }, cases: {}, days: {}, settings: { newPerDay: 20, unverified: false } };
   }
   var st;
   try { st = Object.assign(blank(), JSON.parse(localStorage.getItem(KEY) || '{}')); } catch (e) { st = blank(); }
@@ -54,6 +54,11 @@
       var m = st.mcq; m.total++; if (ok) m.correct++;
       var b = m.byType[type] || (m.byType[type] = { total: 0, correct: 0 });
       b.total++; if (ok) b.correct++; save();
+    },
+
+    recordCase: function (id, ok) {
+      var c = st.cases[id] || (st.cases[id] = { tries: 0, correct: 0 });
+      c.tries++; if (ok) c.correct++; c.lastOk = ok; c.last = today(); save();
     },
 
     exportJson: function () {
