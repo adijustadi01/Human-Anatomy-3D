@@ -67,6 +67,11 @@
       return '<div class="mn"><strong>' + esc(m.text || '') + '</strong> — ' + rv(AN.rich(m.meaning || ''), m.meaning) + '</div>';
     }).join(''));
 
+    var cmps = AN.comparisonsFor ? AN.comparisonsFor(s.id) : [];
+    if (cmps.length) h += '<section class="csec"><h3>Compare</h3><ul class="slist">' + cmps.map(function (c) {
+      return '<li><a href="#/compare/' + c.id + '">' + esc(c.title) + '</a></li>';
+    }).join('') + '</ul></section>';
+
     var figs = AN.figuresFor ? AN.figuresFor(s.id) : [];
     if (figs.length) h += '<section class="csec"><h3>Diagrams</h3>' + figs.map(function (f) { return AN.renderFigure(f, rec); }).join('') + '</section>';
 

@@ -50,6 +50,14 @@ for (const f of AN.FIGURES || []) {
   [...(f.structures || []), ...f.labels.map(l => l.r).filter(Boolean)]
     .forEach(r => { if (!AN.byId[r]) errs.push(`figure ${f.id}: link to missing id "${r}"`); });
 }
+for (const c of AN.COMPARISONS || []) {
+  if (c.items) {
+    c.items.forEach(r => { if (!AN.byId[r]) errs.push(`comparison ${c.id}: missing structure "${r}"`); });
+  } else {
+    (c.structures || []).forEach(r => { if (!AN.byId[r]) errs.push(`comparison ${c.id}: link to missing id "${r}"`); });
+    c.rows.forEach(r => { if (r.cells.length !== c.columns.length) errs.push(`comparison ${c.id}: row "${r.label}" has ${r.cells.length} cells, expected ${c.columns.length}`); });
+  }
+}
 const unv = AN.structures.filter(s => !s.verified);
 const flagged = AN.structures.filter(s => (s.doubtful || []).length);
 console.log(`\n${AN.structures.length} structures · ${AN.structures.length - unv.length} verified · ${unv.length} unverified · ${flagged.length} with flagged fields\n`);

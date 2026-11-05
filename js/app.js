@@ -22,6 +22,7 @@
         else if (AN.revealNextLabel(v)) e.preventDefault();
       };
     }
+    else if (a === 'compare') { if (b) AN.comparePages.one(v, b); else AN.comparePages.list(v); }
     else if (a === 'figs') AN.figPages.list(v);
     else if (a === 'fig') AN.figPages.one(v, b);
     else if (a === 'quiz') AN.quiz.route(v, b, r.params);

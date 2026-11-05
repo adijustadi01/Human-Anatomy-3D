@@ -1,0 +1,133 @@
+// COMPARISON TABLES
+// Auto tables (items + fields) pull their cells from the structure cards — fix facts on the cards.
+// Written tables (columns + rows) hold their own content: verify here; mark doubtful rows with d: true,
+// then set verified: true and fill source.
+AN.registerComparisons([
+// ---------- AUTO: built from cards ----------
+{ id: 'cmp-ul-nerves', title: 'Nerves of the upper limb', region: 'upper-limb',
+  items: ['ul-nerve-musculocutaneous', 'ul-nerve-axillary', 'ul-nerve-radial', 'ul-nerve-median', 'ul-nerve-ulnar'],
+  fields: ['rootValue', 'motor', 'sensory', 'clinical'] },
+{ id: 'cmp-rotator-cuff', title: 'Rotator cuff muscles', region: 'upper-limb',
+  items: ['ul-musc-supraspinatus', 'ul-musc-infraspinatus', 'ul-musc-teres-minor', 'ul-musc-subscapularis'],
+  fields: ['origin', 'insertion', 'nerveSupply', 'action'] },
+{ id: 'cmp-coronary', title: 'Right vs left coronary artery', region: 'thorax',
+  items: ['th-art-rca', 'th-art-lca'], fields: ['origin', 'course', 'branches', 'territory', 'clinical'] },
+{ id: 'cmp-mediastinum', title: 'Divisions of the mediastinum', region: 'thorax',
+  items: ['th-space-superior-mediastinum', 'th-space-anterior-mediastinum', 'th-space-middle-mediastinum', 'th-space-posterior-mediastinum'],
+  fields: ['boundaries', 'contents'] },
+{ id: 'cmp-gut-arteries', title: 'Arteries of foregut, midgut and hindgut', region: 'abdomen',
+  items: ['ab-art-coeliac', 'ab-art-sma', 'ab-art-ima'], fields: ['origin', 'branches', 'territory', 'clinical'] },
+{ id: 'cmp-perineal-pouches', title: 'Superficial vs deep perineal pouch', region: 'pelvis-perineum',
+  items: ['pp-space-superficial-perineal-pouch', 'pp-space-deep-perineal-pouch'], fields: ['boundaries', 'contents', 'clinical'] },
+{ id: 'cmp-ll-thigh-nerves', title: 'Femoral vs obturator vs sciatic nerve', region: 'lower-limb',
+  items: ['ll-nerve-femoral', 'll-nerve-obturator', 'll-nerve-sciatic'], fields: ['rootValue', 'motor', 'sensory', 'clinical'] },
+{ id: 'cmp-ll-leg-nerves', title: 'Tibial vs common fibular nerve', region: 'lower-limb',
+  items: ['ll-nerve-tibial', 'll-nerve-common-fibular'], fields: ['rootValue', 'course', 'motor', 'sensory', 'clinical'] },
+{ id: 'cmp-eye-nerves', title: 'Nerves of the extraocular muscles (III, IV, VI)', region: 'head-neck',
+  items: ['hn-nerve-oculomotor', 'hn-nerve-trochlear', 'hn-nerve-abducent'], fields: ['rootValue', 'course', 'motor', 'clinical'] },
+{ id: 'cmp-brainstem', title: 'Medulla vs pons vs midbrain', region: 'neuroanatomy',
+  items: ['na-cns-medulla', 'na-cns-pons', 'na-cns-midbrain'], fields: ['parts', 'functions', 'bloodSupply', 'lesion'] },
+{ id: 'cmp-tracts', title: 'Major spinal tracts', region: 'neuroanatomy',
+  items: ['na-tract-dcml', 'na-tract-spinothalamic', 'na-tract-posterior-spinocerebellar', 'na-tract-corticospinal'],
+  fields: ['origin', 'decussation', 'termination', 'function', 'lesion'] },
+{ id: 'cmp-cerebral-arteries', title: 'Anterior vs middle vs posterior cerebral artery', region: 'neuroanatomy',
+  items: ['na-art-aca', 'na-art-mca', 'na-art-pca'], fields: ['origin', 'branches', 'territory', 'clinical'] },
+
+// ---------- WRITTEN: content lives here ----------
+{ id: 'cmp-umn-lmn', title: 'UMN vs LMN lesion', region: 'neuroanatomy', verified: false, source: '',
+  structures: ['na-tract-corticospinal', 'na-cns-motor-cortex'],
+  columns: ['Upper motor neuron lesion', 'Lower motor neuron lesion'],
+  rows: [
+    { label: 'Site', cells: ['Motor cortex or corticospinal / corticobulbar pathway above the anterior horn cell or cranial motor nucleus', 'Anterior horn cell, cranial motor nucleus, nerve root or peripheral nerve'] },
+    { label: 'Tone', cells: ['Increased — spasticity (clasp-knife)', 'Decreased — flaccidity'] },
+    { label: 'Weakness', cells: ['Affects groups of muscles / movements (pyramidal pattern)', 'Affects individual muscles or myotomes'] },
+    { label: 'Deep tendon reflexes', cells: ['Exaggerated; clonus may be present', 'Diminished or absent'] },
+    { label: 'Plantar response', cells: ['Extensor (Babinski sign)', 'Flexor or absent'] },
+    { label: 'Wasting', cells: ['Absent or slight (disuse)', 'Marked'] },
+    { label: 'Fasciculations', cells: ['Absent', 'May be present'] }
+  ] },
+{ id: 'cmp-inguinal-hernia', title: 'Direct vs indirect inguinal hernia', region: 'abdomen', verified: false, source: '',
+  structures: ['ab-space-inguinal-canal'],
+  columns: ['Direct', 'Indirect'],
+  rows: [
+    { label: 'Relation to inferior epigastric artery', cells: ['Medial', 'Lateral'] },
+    { label: 'Route', cells: ['Pushes through the posterior wall (Hesselbach’s triangle)', 'Enters the deep ring and passes along the inguinal canal'] },
+    { label: 'Cause', cells: ['Acquired weakness of the posterior wall', 'Usually a patent processus vaginalis (congenital) — may present at any age'] },
+    { label: 'Descent into scrotum', cells: ['Rare', 'Common'] },
+    { label: 'Deep-ring occlusion test', cells: ['Not controlled by pressure over the deep ring', 'Controlled by pressure over the deep ring'] },
+    { label: 'Risk of strangulation', d: true, cells: ['Lower (wide neck)', 'Higher (narrow neck)'] }
+  ] },
+{ id: 'cmp-jejunum-ileum', title: 'Jejunum vs ileum', region: 'abdomen', verified: false, source: '',
+  structures: ['ab-organ-small-intestine'],
+  columns: ['Jejunum', 'Ileum'],
+  rows: [
+    { label: 'Position', cells: ['Mainly upper left abdomen', 'Mainly lower right abdomen and pelvis'] },
+    { label: 'Wall & lumen', cells: ['Thicker wall, wider lumen', 'Thinner wall, narrower lumen'] },
+    { label: 'Colour / vascularity', cells: ['Redder, more vascular', 'Paler'] },
+    { label: 'Plicae circulares', cells: ['Large and closely set', 'Smaller and sparse; absent in the terminal part'] },
+    { label: 'Arterial arcades', cells: ['Few (1–2 tiers)', 'Many (more tiers)'] },
+    { label: 'Vasa recta', cells: ['Long', 'Short'] },
+    { label: 'Mesenteric fat', cells: ['Less; “windows” visible near the gut', 'More; extends up to the gut wall'] },
+    { label: 'Peyer’s patches', cells: ['Absent / few', 'Present'] }
+  ] },
+{ id: 'cmp-small-large-intestine', title: 'Small vs large intestine', region: 'abdomen', verified: false, source: '',
+  structures: ['ab-organ-small-intestine', 'ab-organ-colon'],
+  columns: ['Small intestine', 'Large intestine'],
+  rows: [
+    { label: 'Taeniae coli', cells: ['Absent', 'Present'] },
+    { label: 'Haustrations (sacculations)', cells: ['Absent', 'Present'] },
+    { label: 'Appendices epiploicae', cells: ['Absent', 'Present'] },
+    { label: 'Villi', cells: ['Present', 'Absent'] },
+    { label: 'Calibre', cells: ['Narrower', 'Wider'] },
+    { label: 'Mobility', cells: ['Jejunum and ileum mobile on the mesentery', 'Partly fixed (ascending and descending colon retroperitoneal)'] }
+  ] },
+{ id: 'cmp-pectinate-line', title: 'Anal canal: above vs below the pectinate line', region: 'pelvis-perineum', verified: false, source: '',
+  structures: ['pp-organ-anal-canal'],
+  columns: ['Above the pectinate line', 'Below the pectinate line'],
+  rows: [
+    { label: 'Embryology', cells: ['Endoderm (hindgut)', 'Ectoderm (proctodeum)'] },
+    { label: 'Epithelium', cells: ['Columnar', 'Stratified squamous'] },
+    { label: 'Arterial supply', cells: ['Superior rectal artery', 'Inferior rectal artery'] },
+    { label: 'Venous drainage', cells: ['Portal (superior rectal → inferior mesenteric vein)', 'Systemic (inferior rectal → internal pudendal vein)'] },
+    { label: 'Nerve supply', cells: ['Autonomic — insensitive to pain', 'Somatic (inferior rectal nerve) — pain-sensitive'] },
+    { label: 'Lymph drainage', d: true, cells: ['Internal iliac (and inferior mesenteric) nodes', 'Superficial inguinal nodes'] },
+    { label: 'Haemorrhoids', cells: ['Internal — painless bleeding', 'External — painful'] },
+    { label: 'Usual carcinoma', cells: ['Adenocarcinoma', 'Squamous cell carcinoma'] }
+  ] },
+{ id: 'cmp-pelvis-sex', title: 'Male vs female bony pelvis', region: 'pelvis-perineum', verified: false, source: '',
+  structures: ['pp-bone-pelvis'],
+  columns: ['Male', 'Female'],
+  rows: [
+    { label: 'General build', cells: ['Heavy, rough, prominent markings', 'Lighter, smoother'] },
+    { label: 'Inlet', cells: ['Heart-shaped', 'Oval / round, wider'] },
+    { label: 'Cavity', cells: ['Deep, funnel-shaped', 'Shallow, wide'] },
+    { label: 'Subpubic angle', d: true, cells: ['Narrow (about 50–60°)', 'Wide (about 80–85°)'] },
+    { label: 'Greater sciatic notch', cells: ['Narrow', 'Wide'] },
+    { label: 'Sacrum', cells: ['Long, narrow, more curved', 'Short, wide, less curved'] },
+    { label: 'Acetabulum', cells: ['Larger', 'Smaller'] },
+    { label: 'Obturator foramen', cells: ['Oval', 'Triangular'] },
+    { label: 'Ischial tuberosities', cells: ['Inverted', 'Everted'] }
+  ] },
+{ id: 'cmp-facial-palsy', title: 'UMN vs LMN facial palsy', region: 'head-neck', verified: false, source: '',
+  structures: ['hn-nerve-facial'],
+  columns: ['UMN (supranuclear) lesion', 'LMN (nuclear / infranuclear) lesion'],
+  rows: [
+    { label: 'Typical cause', cells: ['Stroke involving corticobulbar fibres', 'Bell’s palsy, parotid tumour, middle-ear or skull-base lesion'] },
+    { label: 'Side of face affected', cells: ['Opposite side to the lesion', 'Same side as the lesion'] },
+    { label: 'Forehead', cells: ['Spared (bilateral cortical supply to upper face)', 'Paralysed'] },
+    { label: 'Eye closure', cells: ['Usually possible', 'Impaired; Bell’s phenomenon visible'] },
+    { label: 'Emotional facial movement', d: true, cells: ['May be preserved', 'Lost'] },
+    { label: 'Taste, lacrimation, hyperacusis', cells: ['Not affected', 'May be affected, depending on the level of the lesion'] }
+  ] },
+{ id: 'cmp-lungs', title: 'Right vs left lung', region: 'thorax', verified: false, source: '',
+  structures: ['th-organ-lung', 'th-organ-main-bronchi', 'th-organ-bp-segments'],
+  columns: ['Right lung', 'Left lung'],
+  rows: [
+    { label: 'Lobes', cells: ['Three', 'Two'] },
+    { label: 'Fissures', cells: ['Oblique and horizontal', 'Oblique only'] },
+    { label: 'Size & shape', cells: ['Larger, shorter and wider', 'Smaller, longer and narrower'] },
+    { label: 'Anterior border', cells: ['Straight', 'Cardiac notch; lingula'] },
+    { label: 'Bronchopulmonary segments', d: true, cells: ['10', '8–10 (texts vary)'] },
+    { label: 'Main bronchus', cells: ['Wider, shorter, more vertical; eparterial upper lobe bronchus', 'Narrower, longer, more oblique'] }
+  ] }
+]);

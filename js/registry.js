@@ -9,6 +9,8 @@ window.AN = window.AN || {};
   AN.FIGURES = [];   // teaching diagrams (diagrams/figures/*.js)
   AN.figById = {};
   AN.registerFigure = function (f) { AN.FIGURES.push(f); AN.figById[f.id] = f; };
+  AN.COMPARISONS = []; // comparison tables (content/comparisons.js)
+  AN.registerComparisons = function (list) { AN.COMPARISONS = AN.COMPARISONS.concat(list); };
 
   AN.registerStructures = function (file, list) {
     list.forEach(function (s) {
