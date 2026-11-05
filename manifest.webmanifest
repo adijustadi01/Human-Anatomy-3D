@@ -1,0 +1,14 @@
+{
+  "name": "Anatomy Revision",
+  "short_name": "Anatomy",
+  "description": "MBBS anatomy revision: cards, diagrams, comparisons, clinical cases and spaced repetition.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f6f2",
+  "theme_color": "#1f6f8b",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

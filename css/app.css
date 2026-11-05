@@ -173,3 +173,20 @@ table.rel { border-collapse: collapse; width: 100%; }
 /* Flashcard type picker */
 .kinds { border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; display: flex; flex-wrap: wrap; gap: 6px 16px; width: 100%; }
 .kinds legend { font-size: .85rem; color: var(--muted); padding: 0 4px; }
+
+/* Phone & tablet */
+body { padding-bottom: env(safe-area-inset-bottom); }
+.topnav { overflow-x: auto; scrollbar-width: none; }
+.topnav::-webkit-scrollbar { display: none; }
+.topnav a { white-space: nowrap; }
+@media (max-width: 700px) {
+  .top { padding: 8px 12px; gap: 6px; padding-top: max(8px, env(safe-area-inset-top)); }
+  .topnav { order: 3; width: 100%; flex-wrap: nowrap; }
+  #searchForm input { width: 150px; }
+  main { padding: 0 12px 60px; }
+  .card, .cmp { padding: 14px 12px; }
+  .chead { flex-direction: column; }
+  .cact { justify-content: flex-start; }
+  .rate button, .opt { padding: 14px 10px; }
+  .q { font-size: 1.15rem; }
+}

@@ -87,5 +87,7 @@
     });
     if (AN.errors.length) document.getElementById('errors').innerHTML = AN.errors.map(AN.esc).join('<br>');
     route();
+    // installable / offline app when served over http(s), e.g. GitHub Pages
+    if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) navigator.serviceWorker.register('sw.js');
   });
 })(window.AN);
