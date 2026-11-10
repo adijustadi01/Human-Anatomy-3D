@@ -1,0 +1,14 @@
+{
+  "name": "anatomy-3d-build",
+  "private": true,
+  "description": "Offline build tools for the 3D explorer: vendors three.js and converts BodyParts3D meshes into models/*.js. Not needed to run the app.",
+  "scripts": {
+    "vendor": "node build-vendor.js",
+    "models": "node build-models.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0",
+    "meshoptimizer": "^0.22.0",
+    "three": "^0.170.0"
+  }
+}

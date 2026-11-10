@@ -1,7 +1,7 @@
 {
   "name": "Anatomy Revision",
   "short_name": "Anatomy",
-  "description": "MBBS anatomy revision: cards, diagrams, comparisons, clinical cases and spaced repetition.",
+  "description": "MBBS anatomy revision: cards, a 3D explorer, diagrams, comparisons, clinical cases and spaced repetition.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

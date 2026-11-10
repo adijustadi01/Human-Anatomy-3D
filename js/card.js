@@ -36,6 +36,7 @@
       '<a class="chip" href="#/region/' + s.region + '">' + AN.nameOf(AN.REGIONS, s.region) + '</a>' +
       (s.system || []).map(function (y) { return '<a class="chip" href="#/system/' + y + '">' + AN.nameOf(AN.SYSTEMS, y) + '</a>'; }).join('') +
       '</div></div><div class="cact">' +
+      (AN.M3D && AN.M3D.cardLink(s) ? '<a class="bm tbtn" href="' + AN.M3D.cardLink(s) + '">View in 3D</a>' : '') +
       '<button class="bm tbtn' + (rec ? ' on' : '') + '" data-recall>' + (rec ? '🧠 Recall: on' : '🧠 Recall: off') + '</button>' +
       '<button class="bm tbtn" data-revealall>Reveal all</button>' +
       '<button class="bm' + (bm ? ' on' : '') + '" data-bm="' + s.id + '">' + (bm ? '★ Bookmarked' : '☆ Bookmark') + '</button></div></header>' +

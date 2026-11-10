@@ -23,7 +23,8 @@
   AN.nav = {
     home: function (v) {
       var all = AN.structures, unv = all.filter(function (s) { return !s.verified; }).length;
-      v.innerHTML = '<h2>Study by region</h2><div class="tiles">' +
+      v.innerHTML = '<a class="cta3d" href="#/3d"><b>3D explorer</b><span>Turn the body around, peel away layers, cut it open and fly through it.</span></a>' +
+        '<h2>Study by region</h2><div class="tiles">' +
         AN.REGIONS.map(function (r) { return tile('#/region/' + r.id, r.name, all.filter(function (s) { return s.region === r.id; }).length); }).join('') +
         '</div><h2>Study by system</h2><div class="tiles">' +
         AN.SYSTEMS.map(function (y) { return tile('#/system/' + y.id, y.name, all.filter(function (s) { return (s.system || []).indexOf(y.id) >= 0; }).length); }).join('') +
@@ -38,7 +39,8 @@
       v.innerHTML = '<h2>' + AN.nameOf(AN.REGIONS, id) + (zname ? ' › ' + esc(zname) : '') + '</h2>' +
         '<div class="regionwrap">' +
         (d ? '<div class="diagram">' + d.svg.replace(/__REGION__/g, id) +
-          '<p class="muted small">Click a zone to filter.' + (zone ? ' <a href="#/region/' + id + '">Show all</a>' : '') + '</p></div>' : '') +
+          '<p class="muted small">Click a zone to filter.' + (zone ? ' <a href="#/region/' + id + '">Show all</a>' : '') + '</p>' +
+          (AN.M3D.index.packs[id] ? '<a class="btn3d" href="#/3d/' + id + '">Explore this region in 3D</a>' : '') + '</div>' : '') +
         '<div class="rlist">' + AN.listByType(list) + '</div></div>';
       if (d && zone) { var el = v.querySelector('[data-zone="' + zone + '"]'); if (el) el.classList.add('active'); }
     },

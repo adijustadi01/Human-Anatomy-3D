@@ -9,6 +9,7 @@
 
   function route() {
     AN.onKey = null;
+    if (AN.onLeave) { var leave = AN.onLeave; AN.onLeave = null; leave(); } // lets a page (the 3D viewer) release what it holds
     var r = parse(), a = r.parts[0], b = r.parts[1], v = document.getElementById('view');
     if (!a) AN.nav.home(v);
     else if (a === 'region') AN.nav.region(v, b, r.params);
@@ -24,6 +25,7 @@
     }
     else if (a === 'compare') { if (b) AN.comparePages.one(v, b); else AN.comparePages.list(v); }
     else if (a === 'cases') AN.casePages.route(v, b, r.params);
+    else if (a === '3d') AN.M3D.route(v, b, r.params);
     else if (a === 'figs') AN.figPages.list(v);
     else if (a === 'fig') AN.figPages.one(v, b);
     else if (a === 'quiz') AN.quiz.route(v, b, r.params);
